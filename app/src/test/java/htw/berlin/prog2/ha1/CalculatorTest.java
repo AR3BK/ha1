@@ -90,5 +90,22 @@ class CalculatorTest {
 
 
     //TODO hier weitere Tests erstellen
+
+    @Test
+    @DisplayName("should allow to go negative ")
+    void testNegative() {
+        Calculator calc = new Calculator();
+
+    calc.pressDigitKey(4);
+    calc.pressBinaryOperationKey("-");
+    calc.pressDigitKey(8);
+    calc.pressEqualsKey();
+
+    String expected = "-4";
+    String actual = calc.readScreen();
+
+    assertEquals(expected, actual);
+    }
+
 }
 

@@ -106,6 +106,19 @@ class CalculatorTest {
 
     assertEquals(expected, actual);
     }
+    @Test
+    @DisplayName("Negative 0")
+    void testfail1() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(0);
+        calc.pressNegativeKey();
+        calc.pressEqualsKey();
+
+        String expected = "0";
+        String actual = calc.readScreen();
+    }
+
 
 }
 

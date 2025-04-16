@@ -118,7 +118,15 @@ class CalculatorTest {
         String expected = "0";
         String actual = calc.readScreen();
     }
-
-
+    @Test
+    void testfail2() {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(10);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+        String expected = "Error";
+        String actual = calc.readScreen();
+    }
 }
 

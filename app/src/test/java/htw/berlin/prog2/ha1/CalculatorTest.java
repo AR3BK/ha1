@@ -121,7 +121,8 @@ class CalculatorTest {
     @Test
     void testfail2() {
         Calculator calc = new Calculator();
-        calc.pressDigitKey(10);
+        calc.pressDigitKey(7);
+        calc.pressNegativeKey();
         calc.pressBinaryOperationKey("/");
         calc.pressDigitKey(0);
         calc.pressEqualsKey();

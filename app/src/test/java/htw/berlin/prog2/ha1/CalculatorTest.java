@@ -115,7 +115,7 @@ class CalculatorTest {
         calc.pressNegativeKey();
         calc.pressEqualsKey();
 
-        String expected = "0";
+        String expected = "0"; // zeigt -0 an deswegen rot
         String actual = calc.readScreen();
     }
     @Test
@@ -125,8 +125,9 @@ class CalculatorTest {
         calc.pressBinaryOperationKey("/");
         calc.pressDigitKey(0);
         calc.pressEqualsKey();
-        String expected = "Error";
+        String expected = "Error";      // kommt inf oder so raus
         String actual = calc.readScreen();
+        assertEquals(expected, actual);
     }
 }
 

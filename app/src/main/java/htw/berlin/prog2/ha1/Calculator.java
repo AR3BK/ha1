@@ -14,6 +14,8 @@ public class Calculator {
 
     private String latestOperation = "";
 
+    private boolean clearall = false;
+
     /**
      * @return den aktuellen Bildschirminhalt als String
      */
@@ -45,9 +47,18 @@ public class Calculator {
      * im Ursprungszustand ist.
      */
     public void pressClearKey() {
-        screen = "0";
-        latestOperation = "";
-        latestValue = 0.0;
+        if (!clearall){
+            screen = "0"; // Bildschirm löschen
+            clearall = true;  // Merkt Clear wurde gedrückt
+        } else {
+            screen = "0";
+            latestOperation = ""; // Alles wird zurückgesetzt
+            latestValue = 0.0;
+            clearall = false;
+        }
+ //        screen = "0";
+//        latestOperation = "";
+//        latestValue = 0.0;
     }
 
     /**
@@ -107,6 +118,7 @@ public class Calculator {
     public void pressNegativeKey() {
         screen = screen.startsWith("-") ? screen.substring(1) : "-" + screen;}
 
+
     /**
      * Empfängt den Befehl der gedrückten "="-Taste.
      * Wurde zuvor keine Operationstaste gedrückt, passiert nichts.
@@ -117,7 +129,6 @@ public class Calculator {
      * und das Ergebnis direkt angezeigt.
      */
     public void pressEqualsKey() {
-        if (latestOperation.isEmpty()) return; // -0 geht nicht
 
         var result = switch(latestOperation) {
             case "+" -> latestValue + Double.parseDouble(screen);
